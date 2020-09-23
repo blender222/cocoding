@@ -1,0 +1,223 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  user-select: none;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+html {
+  font-size: 16px;
+}
+
+html, html > body {
+  width: 100%;
+  height: 100%;
+}
+
+html > body {
+  position: relative;
+  z-index: -2;
+  background-image: linear-gradient(170deg, #eee8aa 0%, #abecd6 100%);
+}
+
+html > body > #backgroundRest {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  background-image: linear-gradient(170deg, #7579ff 0%, #b224ef 100%);
+  display: none;
+}
+
+#allContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+#allContent > .area {
+  width: 50%;
+}
+
+#allContent > .rightArea {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#svgClock {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+
+#userInterface {
+  width: 50rem;
+  height: 30rem;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 2rem;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(100, 2, 2, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#settingBox {
+  width: 40rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#settingBox > .svgSettings {
+  width: 5rem;
+  height: 5rem;
+  vertical-align: middle;
+  fill: rgba(255, 255, 255, 0.8);
+  transition: all .3s;
+}
+
+#settingBox > .svgSettings:hover {
+  cursor: pointer;
+  fill: #fffd6e;
+}
+
+#settingBox > .svgSettings.disabled {
+  pointer-events: none;
+  fill: rgba(255, 255, 255, 0.2);
+}
+
+#settingBox > #soundSwitch, #settingBox #repeatSwitch {
+  display: none;
+}
+
+#sliderBox {
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#sliderBox > .barContainer {
+  width: 40rem;
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+}
+
+#sliderBox > .barContainer > .valueBox {
+  position: absolute;
+  left: 1.5rem;
+  top: 0.5rem;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 500;
+  display: flex;
+}
+
+#sliderBox > .barContainer > .valueBox > .displayValue {
+  width: 2em;
+  text-align: center;
+}
+
+#sliderBox > .barContainer > .bar {
+  width: 37rem;
+  height: 2rem;
+  margin: 0.5rem 0;
+  border-radius: 10rem;
+  overflow: hidden;
+  box-shadow: inset 0.15rem 0.3rem 0.5rem rgba(255, 255, 255, 0.4);
+}
+
+#sliderBox > .barContainer > .bar > .fill {
+  width: 0;
+  height: 100%;
+  border-radius: 10rem 0 0 10rem;
+  box-shadow: inset 0.15rem 0.3rem 0.5rem rgba(255, 255, 255, 0.4);
+}
+
+#sliderBox > .barContainer > .slider {
+  -webkit-appearance: none;
+  position: absolute;
+  outline: none;
+  width: 100%;
+  height: 3rem;
+  background-color: transparent;
+}
+
+#sliderBox > .barContainer > .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  background-image: linear-gradient(135deg, #ffd755 0%, #fd8a1e 100%);
+}
+
+#sliderBox > .barContainer > .slider::-moz-range-thumb {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-image: linear-gradient(135deg, #fa5 0%, #e58a8a 100%);
+}
+
+#bar1 > .valueBox > .displayValue {
+  color: #86ea99;
+}
+
+#bar1 > .bar {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+#bar1 > .bar > .fill {
+  background-color: #86ea99;
+}
+
+#bar2 > .valueBox > .displayValue:first-child {
+  color: lightpink;
+}
+
+#bar2 > .valueBox > .displayValue:last-child {
+  color: lightskyblue;
+}
+
+#bar2 > .bar {
+  background-color: lightskyblue;
+}
+
+#bar2 > .bar > .fill {
+  background-color: lightpink;
+}
+
+#countDownText {
+  width: 50rem;
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15rem;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+}
+
+#countDownText > .semicolon {
+  margin: 0 0.5rem;
+  transform: translateY(-6%);
+}
+
+#countDownText > .minutesLeft, #countDownText > .secondsLeft {
+  letter-spacing: 0.2rem;
+  position: relative;
+}
+/*# sourceMappingURL=tomatoClock_alpha.css.map */

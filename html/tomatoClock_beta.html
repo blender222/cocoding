@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #aaa;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        div {
+            font-size: 30px;
+            color: #ffffff;
+        }
+        .outputBox {
+            display: flex;
+            margin-top: 30px;
+        }
+        #output {
+            width: 1.5em;
+        }
+        #totalTimeRange, #workRestRange {
+            -webkit-appearance: none;
+            width: 50%;
+            height: 30px;
+            margin: 30px 0;
+            border-radius: 50px;
+            opacity: 0.8;
+            outline: none;
+            /*  */
+            /* outline: 1px solid #ff0000; */
+        }
+        #totalTimeRange {
+            background-image: linear-gradient(90deg, #fa0 50%, #ccc 50%);
+        }
+        #workRestRange {
+            background-image: linear-gradient(90deg, #faa 50%, #aaf 50%);
+        }
+        #totalTimeRange::-webkit-slider-thumb, #workRestRange::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 10px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            cursor: pointer;
+            position: relative;
+            top: 20px;
+        }
+        #totalTimeRange::-moz-range-thumb, #workRestRange::-moz-range-thumb {
+            -moz-appearance: none;
+            width: 10px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #fff;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        window.onload = function() {
+            // 取元素
+            var slider1 = $('#totalTimeRange')
+            var slider2 = $('#workRestRange')
+            var outputNum1 = $('#outputTotal .outputNum')
+            var outputNum2 = $('#outputWorkRest .outputNum')
+            // 顏色設定
+            var slider1_color1 = "#fa0"
+            var slider1_color2 = "#ccc"
+            var workTimeColor = "#faa"
+            var restTimeColor = "#aaf"
+            // 初始化css
+            slider1.css('background-image', LGString(slider1_color1, slider1_color2, 100 * (slider1.val() - slider1.attr('min')) / (slider1.attr('max') - slider1.attr('min'))))
+            slider2.css('background-image', LGString(workTimeColor, restTimeColor, 100 * (slider2.val() - slider2.attr('min')) / (slider2.attr('max') - slider2.attr('min'))))
+            // 顯示初始值
+            outputNum1.html(slider1.val())
+            outputNum2.html(slider2.val())
+            // 監聽滑桿改變初始值
+            slider1.on('input', function() {
+                var percentNum = 100 * (slider1.val() - slider1.attr('min')) / (slider1.attr('max') - slider1.attr('min'))
+                var colorString = LGString(slider1_color1, slider1_color2, percentNum)
+                // 寫入輸出數字
+                outputNum1.html(slider1.val())
+                // 底色跟隨滑桿
+                $(this).css('background-image', colorString)
+                
+            })
+            slider2.on('input', function() {
+                var percentNum = 100 * (slider2.val() - slider2.attr('min')) / (slider2.attr('max') - slider2.attr('min'))
+                var colorString = LGString(workTimeColor, restTimeColor, percentNum)
+                // 寫入輸出數字
+                outputNum2.html(slider2.val())
+                // 底色跟隨滑桿
+                $(this).css('background-image', colorString)
+            })
+            function LGString(color1, color2, percentNum) {
+                // get linear-gradient string
+                return 'linear-gradient(90deg,' + color1 + ' ' + percentNum + '%,' + color2 + ' ' + percentNum + '%)'
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input id="totalTimeRange" class="slider" type="range" min="10" max="60" value="30">
+    <input id="workRestRange" class="slider" type="range" min="1" max="59" value="25">
+    <div id="outputTotal" class="outputBox">
+        <div>value:</div>
+        <div class="outputNum"></div>
+    </div>
+    <div id="outputWorkRest" class="outputBox">
+        <div>value:</div>
+        <div class="outputNum"></div>
+    </div>
+</body>
+
+</html>
