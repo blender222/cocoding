@@ -1,5 +1,5 @@
-@import "./variables";
-@import "./mixins";
+@import "variables";
+@import "mixins";
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +11,7 @@ html {
     font-size: 16px;
     &, > body {
         @include size(100%, 100%);
+        overflow: hidden;
     }
     > body {
         // outline: 1px solid #ff0;
@@ -52,13 +53,14 @@ html {
 // <菜單區==操作區icon + 滑桿區>
 #userInterface {
     // outline: 1px solid #ff0fff;
-    width: 50rem;
-    height: 30rem;
-    margin-top: 4rem;
+    // width: 50rem;
+    width: 47vw;
+    height: 50vh;
+    margin-top: 3vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     border-radius: 2rem;
     box-shadow: 0.5rem 0.5rem 2rem hsla(0, 95.4, 20, 0.6);
     background-color: rgba(0, 0, 0, 0.4);
@@ -67,6 +69,7 @@ html {
 #settingBox {
     // outline: 1px solid #ff0000;
     width: 40rem;
+    margin-bottom: 1rem;
     display: flex;
     justify-content: space-between;
     > .svgSettings {
@@ -193,12 +196,13 @@ html {
 // 數位顯示區
 #countDownText {
     // outline: 1px solid #ff00f0;
-    width: 50rem;
-    margin-top: 6rem;
+    width: 47vw;
+    height: 40vh;
+    margin-top: 3vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 15rem;
+    font-size: 30vh;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 2rem;
@@ -209,7 +213,6 @@ html {
     }
     > .minutesLeft, > .secondsLeft {
         letter-spacing: 0.2rem;
-        position: relative;
         // outline: 1px solid #ff0000;
     }
 }
