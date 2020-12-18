@@ -1,218 +1,302 @@
 @import "variables";
 @import "mixins";
 * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    user-select: none;
-    font-family: 'Noto Sans TC', sans-serif;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  user-select: none;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 html {
-    font-size: 16px;
-    &, > body {
-        @include size(100%, 100%);
-        overflow: hidden;
+  font-size: 16px;
+  &,
+  > body {
+    @include size(100%, 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  > body {
+    // outline: 1px solid #ff0;
+    position: relative;
+    z-index: -2;
+    background-image: linear-gradient(170deg, #eee8aa 0%, #abecd6 100%);
+    > #backgroundRest {
+      @include size(100%, 100%);
+      position: absolute;
+      z-index: -1;
+      background-image: linear-gradient(170deg, #7579ff 0%, #b224ef 100%);
+      display: none;
     }
-    > body {
-        // outline: 1px solid #ff0;
-        position: relative;
-        z-index: -2;
-        background-image: linear-gradient(170deg, #eee8aa 0%, #abecd6 100%);
-        > #backgroundRest {
-            @include size(100%, 100%);
-            position: absolute;
-            z-index: -1;
-            background-image: linear-gradient(170deg, #7579ff 0%, #b224ef 100%);
-            display: none;
-        }
-    }
+  }
 }
 // <總內容div>
 #allContent {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  > .area {
+    width: 50%;
+  }
+  > .rightArea {
+    // outline: 1px solid #ff00ff;
+    position: relative;
     display: flex;
-    > .area {
-        width: 50%;
-    }
-    > .rightArea {
-        // outline: 1px solid #ff00ff;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+    flex-direction: column;
+    align-items: center;
+  }
 }
 // <時鐘SVG區>
 #svgClock {
-    width: 100%;
-    height: 100%;
-    // outline: 1px solid #ff0000;
-    vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  // outline: 1px solid #ff0000;
+  vertical-align: middle;
 }
 // <菜單區==操作區icon + 滑桿區>
 #userInterface {
-    // outline: 1px solid #ff0fff;
-    // width: 50rem;
-    width: 47vw;
-    height: 50vh;
-    margin-top: 3vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 2rem;
-    box-shadow: 0.5rem 0.5rem 2rem hsla(0, 95.4, 20, 0.6);
-    background-color: rgba(0, 0, 0, 0.4);
+  // outline: 1px solid #ff0fff;
+  width: 47vw;
+  height: 50vh;
+  margin-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  box-shadow: 0.5rem 0.5rem 2rem hsla(0, 95.4, 20, 0.6);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 // 操作區icon-SVG
 #settingBox {
-    // outline: 1px solid #ff0000;
-    width: 40rem;
-    margin-bottom: 1rem;
-    display: flex;
-    justify-content: space-between;
-    > .svgSettings {
-        width: 5rem;
-        height: 5rem;
-        vertical-align: middle;
-        fill: rgba(255, 255, 255, 0.8);
-        transition: all .3s;
-        &:hover {
-            cursor: pointer;
-            fill: $colorIcon;
-        }
-        &.disabled {
-            pointer-events: none;
-            fill: rgba(255, 255, 255, 0.2);
-        }
+  // outline: 1px solid #ff0000;
+  width: 40rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  > .svgSettings {
+    width: 5rem;
+    height: 5rem;
+    vertical-align: middle;
+    fill: rgba(255, 255, 255, 0.8);
+    transition: all .3s;
+    &:hover {
+      cursor: pointer;
+      fill: $colorIcon;
     }
-    > #soundSwitch, #repeatSwitch {
-        display: none;
+    &.disabled {
+      pointer-events: none;
+      fill: rgba(255, 255, 255, 0.2);
     }
+  }
+  > #soundSwitch,
+  #repeatSwitch {
+    display: none;
+  }
 }
 // 滑桿區
 #sliderBox {
-    // outline: 1px solid #ff00ff;
+  // outline: 1px solid #ff00ff;
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  > .barContainer {
     width: 40rem;
+    height: 7rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    > .barContainer {
-        width: 40rem;
-        height: 7rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
-        position: relative;
-        // outline: 1px solid #ff00ff;
-        > .valueBox {
-            // outline: 1px solid #ff0000;
-            position: absolute;
-            left: 1.5rem;
-            top: 0.5rem;
-            color: #ffffff;
-            font-size: 2rem;
-            font-weight: 500;
-            display: flex;
-            > .displayValue {
-                width: 2em;
-                text-align: center;
-                // outline: 1px solid #ffff00;
-            }
-        }
-        > .bar {
-            width: 37rem;
-            height: 2rem;
-            margin: 0.5rem 0;
-            border-radius: 10rem;
-            overflow: hidden;
-            box-shadow: inset 0.15rem 0.3rem 0.5rem rgba(255, 255, 255, 0.4);
-            // outline: 1px solid #ff0000;
-            > .fill {
-                width: 0;
-                height: 100%;
-                border-radius: 10rem 0 0 10rem;
-                box-shadow: inset 0.15rem 0.3rem 0.5rem rgba(255, 255, 255, 0.4);
-            }
-        }
-        > .slider {
-            -webkit-appearance: none;
-            position: absolute;
-            outline: none;
-            width: 100%;
-            height: 3rem;
-            background-color: transparent;
-            // outline: 1px solid #ff0000;
-            &::-webkit-slider-thumb {
-                -webkit-appearance: none;
-                width: 3rem;
-                height: 3rem;
-                border-radius: 50%;
-                cursor: pointer;
-                position: relative;
-                background-image: linear-gradient(135deg, rgb(255, 215, 85) 0%, rgb(253, 138, 30) 100%);
-            }
-            &::-moz-range-thumb {
-                width: 3rem;
-                height: 3rem;
-                border: none;
-                border-radius: 50%;
-                cursor: pointer;
-                background-image: linear-gradient(135deg, #fa5 0%, rgb(229, 138, 138) 100%);
-            }
-        }
+    justify-content: flex-end;
+    position: relative;
+    // outline: 1px solid #ff00ff;
+    > .valueBox {
+      // outline: 1px solid #ff0000;
+      position: absolute;
+      left: 1.5rem;
+      top: 0.5rem;
+      color: #ffffff;
+      font-size: 2rem;
+      font-weight: 500;
+      display: flex;
+      > .displayValue {
+        width: 2em;
+        text-align: center;
+        // outline: 1px solid #ffff00;
+      }
     }
+    > .bar {
+      width: 37rem;
+      height: 2rem;
+      margin: 0.5rem 0;
+      border-radius: 10rem;
+      overflow: hidden;
+      box-shadow: inset 0.15rem 0.3rem 0.5rem rgba(255, 255, 255, 0.4);
+      // outline: 1px solid #ff0000;
+      > .fill {
+        width: 0;
+        height: 100%;
+        border-radius: 10rem 0 0 10rem;
+        box-shadow: inset 0.15rem 0.3rem 0.5rem rgba(255, 255, 255, 0.4);
+      }
+    }
+    > .slider {
+      -webkit-appearance: none;
+      position: absolute;
+      outline: none;
+      width: 100%;
+      height: 3rem;
+      background-color: transparent;
+      // outline: 1px solid #ff0000;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        background-image: linear-gradient(150deg, rgb(255, 215, 85) 0%, rgb(253, 138, 30) 100%);
+        box-shadow: inset 6px 8px 8px -4px rgba(255, 255, 255, .5);
+      }
+      &::-moz-range-thumb {
+        width: 3rem;
+        height: 3rem;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        background-image: linear-gradient(135deg, #fa5 0%, rgb(229, 138, 138) 100%);
+      }
+    }
+  }
 }
 #bar1 {
-    > .valueBox > .displayValue {
-        color: $colorBar1-1;
+  > .valueBox > .displayValue {
+    color: $colorBar1-1;
+  }
+  > .bar {
+    background-color: $colorBar1-2;
+    > .fill {
+      background-color: $colorBar1-1;
     }
-    > .bar {
-        background-color: $colorBar1-2;
-        > .fill {
-            background-color: $colorBar1-1;
-        }
-    }
+  }
 }
 #bar2 {
-    > .valueBox > .displayValue {
-        &:first-child {
-            color: $colorBar2-1;
-        }
-        &:last-child {
-            color: $colorBar2-2;
-        }
+  > .valueBox > .displayValue {
+    &:first-child {
+      color: $colorBar2-1;
     }
-    > .bar {
-        background-color: $colorBar2-2;
-        > .fill {
-            background-color: $colorBar2-1;
-        }
+    &:last-child {
+      color: $colorBar2-2;
     }
+  }
+  > .bar {
+    background-color: $colorBar2-2;
+    > .fill {
+      background-color: $colorBar2-1;
+    }
+  }
 }
 // 數位顯示區
 #countDownText {
-    // outline: 1px solid #ff00f0;
-    width: 47vw;
-    height: 40vh;
-    margin-top: 3vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30vh;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-radius: 2rem;
-    > .semicolon {
-        // outline: 1px solid #ff0000;
-        margin: 0 0.5rem;
-        transform: translateY(-6%);
+  width: 47vw;
+  height: 40vh;
+  margin-top: 3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30vh;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  > .semicolon {
+    margin: 0 0.5rem;
+    transform: translateY(-6%);
+  }
+  > .minutesLeft,
+  > .secondsLeft {
+    letter-spacing: 0.2rem;
+  }
+  > span {
+    position: relative;
+    bottom: 17px;
+    display: block;
+  }
+}
+// 蕃茄鐘簡介
+.info {
+  #info_check {
+    position: absolute;
+    @include size(0, 0);
+    opacity: 0;
+  }
+  .info_icon {
+    @include size(50px, 50px);
+    position: absolute;
+    display: block;
+    top: 10px;
+    left: 10px;
+    fill: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .info_text {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 7% 15%;
+    background-color: rgba(255, 255, 255, .8);
+    .back-icon {
+      @include size(50px, 50px);
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+      user-select: initial;
+      border: 2px solid #333333;
+      outline: none;
+      border-radius: 10%;
+      background-color: transparent;
+      &::before, &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        content: '';
+        @include size(90%, 5px);
+        background-color: #333333;
+      }
+      &::before {
+        transform: rotate(45deg);
+      }
+      &::after {
+        transform: rotate(-45deg);
+      }
     }
-    > .minutesLeft, > .secondsLeft {
-        letter-spacing: 0.2rem;
-        // outline: 1px solid #ff0000;
+    .title-h1 {
+      font-size: 40px;
+      font-weight: 500;
+      margin-bottom: 30px;
     }
+    li {
+      list-style: disc;
+      margin-bottom: 40px;
+      h2 {
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      p {
+        font-weight: 400;
+        font-size: 22px;
+      }
+      p + p {
+        margin-top: 10px;
+      }
+    }
+  }
 }
