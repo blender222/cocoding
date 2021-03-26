@@ -77,12 +77,17 @@ html {
       fill: rgba(255, 255, 255, 0.8);
       &:hover {
         cursor: pointer;
-        filter: drop-shadow(0 0 4px $colorIconHover);
       }
       &.disabled {
         pointer-events: none;
         fill: rgba(255, 255, 255, 0.2);
       }
+    }
+    &:nth-child(-n+3) .svgSettings:hover {
+      filter: drop-shadow(0 0 4px $colorIconHover);
+    }
+    &:nth-child(-n+3) .svgSettings:active {
+      filter: drop-shadow(0 0 6px $colorIconHover);
     }
     .tooltip {
       width: 90px;
