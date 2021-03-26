@@ -25,21 +25,34 @@
     <div class="area rightArea">
       <div id="userInterface">
         <div id="settingBox">
-          <svg id="goTomato" class="svgSettings" viewbox="0 0 32 32">
-            <use xlink:href="../SVG/play3.svg#play3"></use>
-          </svg>
-          <svg id="stopTomato" class="svgSettings disabled" viewbox="0 0 32 32">
-            <use xlink:href="../SVG/stop2.svg#stop2"></use>
-          </svg>
-          <svg id="resetTomato" class="svgSettings" viewbox="0 0 32 32" transform="scale(-1,1)">
-            <use xlink:href="../SVG/spinner11.svg#spinner11"></use>
-          </svg>
-          <svg id="repeatSwitchIcon" class="svgSettings" viewbox="0 0 32 32">
-            <use xlink:href="../SVG/loop.svg#loop"></use>
-          </svg>
-          <svg id="soundSwitchIcon" class="svgSettings" viewbox="0 0 32 32">
-            <use xlink:href="../SVG/bell.svg#bell"></use>
-          </svg>
+          <div class="icon-box">
+            <svg id="goTomato" class="svgSettings" viewbox="0 0 32 32">
+              <use xlink:href="../SVG/play3.svg#play3"></use>
+            </svg>
+          </div>
+          <div class="icon-box">
+            <svg id="stopTomato" class="svgSettings disabled" viewbox="0 0 32 32">
+              <use xlink:href="../SVG/stop2.svg#stop2"></use>
+            </svg>
+          </div>
+          <div class="icon-box">
+            <svg id="resetTomato" class="svgSettings" viewbox="0 0 32 32" transform="scale(-1,1)">
+              <use xlink:href="../SVG/spinner11.svg#spinner11"></use>
+            </svg>
+            <div class="tooltip">重設時長</div>
+          </div>
+          <div class="icon-box">
+            <svg id="repeatSwitchIcon" class="svgSettings" viewbox="0 0 32 32">
+              <use xlink:href="../SVG/loop.svg#loop"></use>
+            </svg>
+            <div class="tooltip">循環執行</div>
+          </div>
+          <div class="icon-box">
+            <svg id="soundSwitchIcon" class="svgSettings" viewbox="0 0 32 32">
+              <use xlink:href="../SVG/bell.svg#bell"></use>
+            </svg>
+            <div class="tooltip">開啟鈴聲</div>
+          </div>
           <input id="repeatSwitch" type="checkbox">
           <input id="soundSwitch" type="checkbox">
         </div>
